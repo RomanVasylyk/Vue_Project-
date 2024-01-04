@@ -1,0 +1,440 @@
+*{
+  margin:0px;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+header{
+  position: fixed;  
+  top:0;
+  left:0;
+  right:0;
+  width:inherit;
+  height:60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color:salmon;
+  z-index: 1; 
+}
+header a:hover{
+  background: rgb(243, 6, 6);
+}
+.container{
+  padding-left:10%;
+  padding-right:10%;
+}
+.main-menu li{
+  display:inline;
+  margin-left: 20px;
+}
+.main-menu li a{
+  text-decoration: none;
+  font-size: 20px;
+  color: #f2f2f2;
+  font-weight: bold;
+  padding: 14px 16px;
+    -webkit-transition: ease-in 0.3s;
+    transition: ease-in 0.3s;
+}
+.hamburger {
+    display: none;
+}
+.bg-red{
+    background-color:red;
+}
+.font-white{
+    color:white;
+}
+
+@media screen and (max-width: 600px) {
+  body{
+    overflow-x: hidden;
+  }
+  .main-menu{
+    display: none;
+  }
+  .hamburger {
+    display: inline;
+  }
+  .main-header{
+    
+    top:0px;
+  }
+  .main-menu.responsive {
+    display: block;
+    position: absolute;
+    background-color: rgb(141, 165, 186);
+    width:100%;
+
+    top:60px;
+    left:0px;
+    padding-top:20px;
+    padding-bottom:20px;
+  }
+  .main-menu.responsive li{
+    display: block;
+    margin-left:0px;
+  }
+}
+.img{
+  width: 32%;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+body { background:rgb(30,30,40); }
+
+
+
+.feedback-input {
+  color:white;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight:500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border:2px solid #CC6666;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width:100%;
+  box-sizing: border-box;
+  outline:0;
+}
+
+.feedback-input:focus { border:2px solid #CC4949; }
+
+textarea {
+  height: 150px;
+  line-height: 150%;
+  resize:vertical;
+}
+
+[type="submit"] {
+  font-family: 'Montserrat', Arial, Helvetica, sans-serif;
+  width: 100%;
+  background:#CC6666;
+  border-radius:5px;
+  border:0;
+  cursor:pointer;
+  color:white;
+  font-size:24px;
+  padding-top:10px;
+  padding-bottom:10px;
+  transition: all 0.3s;
+  margin-top:-4px;
+  font-weight:700;
+}
+[type="submit"]:hover { background:#CC4949; }
+form{
+  max-width:420px; margin: auto;
+}
+.m{
+  margin-top: 10px;
+}
+.z{
+  color: #ef0000;
+  margin: 10px;
+}
+
+
+
+footer{
+  padding-top:3%;
+  padding-bottom: 3%;
+  background-color: #CC6666;
+  margin-top: 20px;
+}
+footer h4{
+  margin-bottom:15px;
+}
+footer p {
+  font-size:15px;
+}
+footer ul{
+  list-style: none;
+  padding-left: 0px;
+}
+footer ul li a{
+  text-decoration: none;
+  color:white;
+}
+
+.col-25{
+  width:25%;
+}
+.row{
+  display:flex;
+  flex-direction: row;
+  align-items: center
+}
+h1{
+  color: antiquewhite;
+  
+  text-align: center;
+}
+.col-75{
+  width: 75%;
+}
+.col-50{
+  width: 50%;
+}
+
+
+* {box-sizing:border-box}
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+.fo{
+  background-color: #e89d9d;
+}
+h2{
+  text-align: center;
+}
+
+main{
+  margin-top: 50px;
+}
+.hero-image {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  right: 0px;
+  }
+.hero-text {
+text-align: center;
+position: absolute;
+top: 10%;
+left: 10%;
+color: rgb(255, 255, 255);
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block ;
+  padding: 10px 25px;
+  color: black;
+  background-color: #ddd;
+  text-align: center;
+  cursor: pointer;
+  
+  position: absolute;
+  top: 300px;
+  left: 200px;
+}
+.s{
+  display: flex;
+  flex-direction: row;
+}
+
+.v{
+  color: #ddd;
+}
+.col-20{
+  width: 20%;
+}
+table{
+  width: 100%;
+  text-align: center;
+}
+table, th, td, tr{
+  border: 1px solid;
+}
+.row1{
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.bat{
+  padding: 15px 25px;
+  border: none;
+  background-color: #e89d9d;
+  margin-left: 50px;
+  margin-top: 10px;
+  
+}
+
+@import url(https://fonts.googleapis.com/css?family=Lato:400,300,100,700,900);
+
+.h1,
+.p,
+.a{
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato';
+}
+
+.h1 {
+  font-size: 2.8em;
+  padding: 10px 0;
+  font-weight: 800;
+}
+
+.p {
+  font-size: 1.1em;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+.header {
+  width: 100%;
+  padding:60px 0;
+  text-align: center;
+  background: #e89d9d;
+  color: white;
+}
+
+
+.btn-bgstroke {
+  font-size: 20px;
+  display: inline-block;
+  border: 1px solid white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 300;
+  margin-top: 30px; 
+}
+
+.btn-bgstroke:hover {
+  background-color: white;
+  color: #33cccc;
+}
+
+.hh1{
+  margin-top:70px;
+}
+
+
+
+
+    .accordion {
+        background-color: rgb(172, 95, 95);
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+    
+    .active, .accordion:hover {
+        background-color: rgb(235, 96, 96);
+    }
+    
+    .accordion:after {
+        content: '\002B';
+        color: #777;
+        font-weight: bold;
+        float: right;
+        margin-left: 5px;
+    }
+    
+    .active:after {
+        content: "\2212";
+    }
+    
+    .panel {
+        padding: 0 18px;
+        background-color: rgb(202, 144, 144);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+.i {
+  border-radius: 50%;
+  height: 250px;
+}
+.o{
+  border-radius: 8px;
+  height: 250px;
+}
+.u{
+  border-radius: 70px;
+  height: 250px;
+}
