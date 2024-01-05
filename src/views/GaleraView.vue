@@ -1,6 +1,6 @@
-<teleport>
+<template>
 <header class="container main-header">
-  <a href="#"><img class="img" src="../../public/img/images.jpeg" alt="Logo"></a>
+  <a href="#"><img class="img" src="/img/images.jpeg" alt="Logo"></a>
   <nav class="main-nav">
     <ul class="main-menu" id="main-menu">
       <li>      <router-link
@@ -32,45 +32,45 @@
 
     <div class="mySlides fade">
       <div class="numbertext">1 / 10</div>
-      <img src="../../public/img/1883383.webp" style="width:100%">
+      <img src="/img/1883383.webp" style="width:100%">
     </div>
 
     <div class="mySlides fade">
       <div class="numbertext">2 / 10</div>
-      <img src="../../public/img/1883385.webp" style="width:100%">
+      <img src="/img/1883385.webp" style="width:100%">
     </div>
 
     <div class="mySlides fade">
       <div class="numbertext">3 / 10</div>
-      <img src="../../public/img/1883387.webp" style="width:100%">
+      <img src="/img/1883387.webp" style="width:100%">
     </div>
     <div class="mySlides fade">
       <div class="numbertext">4 / 10</div>
-      <img src="../../public/img/1883384.webp" style="width:100%">
+      <img src="/img/1883384.webp" style="width:100%">
     </div>
     <div class="mySlides fade">
       <div class="numbertext">5 / 10</div>
-      <img src="../../public/img/1883386.webp" style="width:100%">
+      <img src="/img/1883386.webp" style="width:100%">
     </div>
     <div class="mySlides fade">
       <div class="numbertext">6 / 10</div>
-      <img src="../../public/img/1883388.webp" style="width:100%">
+      <img src="/img/1883388.webp" style="width:100%">
     </div>
     <div class="mySlides fade">
       <div class="numbertext">7 / 10</div>
-      <img src="../../public/img/1883389.webp" style="width:100%">
+      <img src="/img/1883389.webp" style="width:100%">
     </div>
     <div class="mySlides fade">
       <div class="numbertext">8 / 10</div>
-      <img src="../../public/img/1883391.webp" style="width:100%">
+      <img src="/img/1883391.webp" style="width:100%">
     </div>
     <div class="mySlides fade">
       <div class="numbertext">9 / 10</div>
-      <img src="../../public/img/Tekst-dlya-reklamy-kafe-i-restoranov-primer-.webp" style="width:100%">
+      <img src="/img/Tekst-dlya-reklamy-kafe-i-restoranov-primer-.webp" style="width:100%">
     </div>
     <div class="mySlides fade">
       <div class="numbertext">10 / 10</div>
-      <img src="../../public/img/Tekst-dlya-reklamy-kafe-i-restoranov-primer-2.webp" style="width:100%">
+      <img src="/img/Tekst-dlya-reklamy-kafe-i-restoranov-primer-2.webp" style="width:100%">
     </div>
     <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
     <a class="next" onclick="plusSlides(1)">&#10095;</a>
@@ -85,28 +85,28 @@
 </section>
 <section class="conteiner">
   <div class="row">
-    <div class="col-25 "><img class="i" style="width: 100%;" src="../../public/img/5.jpeg" alt=""></div>
-    <div class="col-25 "><img class="i" style="width: 100%;" src="../../public/img/6.jpeg" alt=""></div>
-    <div class="col-25 "><img class="i" style="width: 100%;" src="../../public/img/7.jpeg" alt=""></div>
-    <div class="col-25 "><img class="i" style="width: 100%;" src="../../public/img/8.jpeg" alt=""></div>
+    <div class="col-25 "><img class="i" style="width: 100%;" src="/img/5.jpeg" alt=""></div>
+    <div class="col-25 "><img class="i" style="width: 100%;" src="/img/6.jpeg" alt=""></div>
+    <div class="col-25 "><img class="i" style="width: 100%;" src="/img/7.jpeg" alt=""></div>
+    <div class="col-25 "><img class="i" style="width: 100%;" src="/img/8.jpeg" alt=""></div>
   </div>
 </section>
 <br>
 <section class="conteiner">
   <div class="row">
-    <div class="col-25 "><img class="o" style="width: 100%;" src="../../public/img/9.jpeg" alt=""></div>
-    <div class="col-25 "><img class="o" style="width: 100%;" src="../../public/img/10.jpeg" alt=""></div>
-    <div class="col-25 "><img class="o" style="width: 100%;" src="../../public/img/11.jpeg" alt=""></div>
-    <div class="col-25 "><img class="o" style="width: 100%;" src="../../public/img/12.jpeg" alt=""></div>
+    <div class="col-25 "><img class="o" style="width: 100%;" src="/img/9.jpeg" alt=""></div>
+    <div class="col-25 "><img class="o" style="width: 100%;" src="/img/10.jpeg" alt=""></div>
+    <div class="col-25 "><img class="o" style="width: 100%;" src="/img/11.jpeg" alt=""></div>
+    <div class="col-25 "><img class="o" style="width: 100%;" src="/img/12.jpeg" alt=""></div>
   </div>
 </section>
 <br>
 <section class="conteiner">
   <div class="row">
-    <div class="col-25 "><img class="u" style="width: 100%;" src="../../public/img/13.jpeg" alt=""></div>
-    <div class="col-25 "><img class="u" style="width: 100%;" src="../../public/img/14.jpeg" alt=""></div>
-    <div class="col-25 "><img class="u" style="width: 100%;" src="../../public/img/15.jpeg" alt=""></div>
-    <div class="col-25 "><img class="u" style="width: 100%;" src="../../public/img/16.jpeg" alt=""></div>
+    <div class="col-25 "><img class="u" style="width: 100%;" src="/img/13.jpeg" alt=""></div>
+    <div class="col-25 "><img class="u" style="width: 100%;" src="/img/14.jpeg" alt=""></div>
+    <div class="col-25 "><img class="u" style="width: 100%;" src="/img/15.jpeg" alt=""></div>
+    <div class="col-25 "><img class="u" style="width: 100%;" src="/img/16.jpeg" alt=""></div>
   </div>
 </section>
 
@@ -152,9 +152,9 @@
     Created and designed by Roman Vasylyk
   </div>
 </footer>
-</teleport>
+</template>
 <script>
 export default {
-  name: "GaleriaView"
+  name: "GaleraView"
 }
 </script>

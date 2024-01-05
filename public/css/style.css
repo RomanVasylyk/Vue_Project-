@@ -438,3 +438,6 @@ table, th, td, tr{
   border-radius: 70px;
   height: 250px;
 }
+.salmon-background {
+  background-color: #CC6666;
+}
