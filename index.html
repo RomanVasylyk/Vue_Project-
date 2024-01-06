@@ -12,23 +12,7 @@
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
-    <script>
-        //Nefungovalo to, keď to bolo v súbore js, tak som to napísal sem
-        var acc = document.getElementsByClassName("accordion");
-        var i;
 
-        for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.maxHeight){
-                    panel.style.maxHeight = null;
-                } else {
-                    panel.style.maxHeight = panel.scrollHeight + "px";
-                }
-            });
-        }
-    </script>
     <script src="/js/app%20.js"></script>
   </body>
 </html>

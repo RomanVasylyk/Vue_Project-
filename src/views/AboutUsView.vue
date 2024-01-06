@@ -1,8 +1,64 @@
 <script>
+import { useRootStore } from "@/stores/root.js";
+import axios from 'axios';
+
 export default {
-  name: "AboutUsView"
-}
+  data() {
+    return {
+      selectedCategory: null,
+      currentMealDetails: null,
+      isModalOpen: false,
+    };
+  },
+  computed: {
+    categories() {
+      const categoryStore = useRootStore();
+      return categoryStore.Category.map(c => c.strCategory);
+    },
+    meals() {
+      const categoryStore = useRootStore();
+      return categoryStore.Meal;
+    },
+    mealIngredients() {
+      if (!this.currentMealDetails) {
+        return [];
+      }
+      return Array.from({ length: 20 }, (_, i) => ({
+        ingredient: this.currentMealDetails[`strIngredient${i + 1}`],
+        measure: this.currentMealDetails[`strMeasure${i + 1}`],
+      })).filter(item => item.ingredient && item.ingredient.trim() !== '');
+    },
+  },
+  created() {
+    const categoryStore = useRootStore();
+    categoryStore.getCategory();
+  },
+
+  watch: {
+    selectedCategory(newVal) {
+      const categoryStore = useRootStore();
+      categoryStore.getMeals(newVal);
+    },
+  },
+  methods: {
+    async fetchMealDetails(id) {
+      try {
+        const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+        this.currentMealDetails = response.data.meals[0];
+        console.log(this.currentMealDetails);
+        this.isModalOpen = true;
+      } catch (error) {
+        console.error("Error fetching meal details:", error);
+      }
+    },
+    closeModal() {
+      this.isModalOpen = false;
+      this.currentMealDetails = null;
+    },
+  },
+};
 </script>
+
 
 <template>
   <header class="container main-header">
@@ -32,8 +88,72 @@ export default {
     <h1 class="h1">Blog</h1>
     <h1 class="h1">Rôzne recepty</h1>
     <p class="p">Company Mission Statement goes here</p>
-    <a style="text-decoration: none;" href="https://karaoke-k3.ru/uk/cakes/kratkoe-opisanie-kafe-restoran-shantil-opisanie-menyu-otzyvy-poleznaya.htm" class="btn-bgstroke a">Recepty pre každý vkus</a>
+    <br>
+
+    <v-select
+        :items="categories"
+        v-model="selectedCategory"
+        label="Select Category"
+    ></v-select>
+
   </section>
+  <section>
+    <v-row>
+      <v-col
+          cols="12"
+          md="4"
+          v-for="meal in meals"
+          :key="meal.idMeal"
+      >
+        <v-card @click="fetchMealDetails(meal.idMeal)">
+          <div class="image-container">
+            <v-img
+                :src="meal.strMealThumb"
+                :alt="meal.strMeal"
+                height="200px"
+            ></v-img>
+          </div>
+          <v-card-title>{{ meal.strMeal }}</v-card-title>
+        </v-card>
+      </v-col>
+    </v-row>
+  </section>
+  <v-dialog v-model="isModalOpen" persistent max-width="1200px">
+    <v-card v-if="currentMealDetails">
+      <v-card-title>
+        {{ currentMealDetails?.strMeal }}
+        <v-spacer></v-spacer>
+        <v-btn icon @click="closeModal">
+          <v-icon>mdi-close</v-icon>
+        </v-btn>
+      </v-card-title>
+      <v-card-text>
+        <v-img :src="currentMealDetails?.strMealThumb" height="600px"></v-img>
+        <p><strong>Category:</strong> {{ currentMealDetails?.strCategory }}</p>
+        <p><strong>Cuisine:</strong> {{ currentMealDetails?.strArea }}</p>
+        <p><strong>Instructions:</strong> {{ currentMealDetails?.strInstructions }}</p>
+
+        <h3>Ingredients:</h3>
+        <ul>
+          <li v-for="(item, index) in mealIngredients" :key="index">
+            {{ item.ingredient }} - {{ item.measure }}
+          </li>
+        </ul>
+
+
+        <p v-if="currentMealDetails?.strYoutube">
+          <strong>Video Recipe:</strong>
+          <a :href="currentMealDetails?.strYoutube" target="_blank">Watch here</a>
+        </p>
+      </v-card-text>
+    </v-card>
+  </v-dialog>
+
+
+
+
+
+
   <section class="v s container">
 
     <div style="width: 100%;">
@@ -95,6 +215,10 @@ export default {
     </div>
   </section>
 
+  <section>
+
+  </section>
+
   <footer class="container">
     <div class="row1">
       <div class="col-25">
@@ -139,5 +263,7 @@ export default {
 </template>
 
 <style scoped>
-
+.image-container {
+  background-color: rgb(229, 127, 127);
+}
 </style>
