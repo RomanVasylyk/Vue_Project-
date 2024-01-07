@@ -4,6 +4,7 @@ import { useRootStore } from "@/stores/root.js";
 import axios from 'axios';
 import NavigationBar from '../components/NavigationBar.vue';
 import FooterComponent from '../components/FooterComponent.vue';
+import SearchDisplay from "@/components/SearchDisplay.vue";
 
 export default {
   data() {
@@ -15,12 +16,14 @@ export default {
       selectedIngredient: null,
       countries: [],
       selectedCountry: null,
-
+      allMeals: [],
+      currentFilter: 'A',
     };
   },
   components: {
     NavigationBar,
     FooterComponent,
+    SearchDisplay,
 
   },
   computed: {
@@ -40,6 +43,9 @@ export default {
         ingredient: this.currentMealDetails[`strIngredient${i + 1}`],
         measure: this.currentMealDetails[`strMeasure${i + 1}`],
       })).filter(item => item.ingredient && item.ingredient.trim() !== '');
+    },
+    filteredMeals() {
+      return this.allMeals.filter(meal => meal.strMeal.startsWith(this.currentFilter));
     },
   },
   async created() {
@@ -82,7 +88,7 @@ export default {
       this.isModalOpen = false;
       this.currentMealDetails = null;
     },
-    customFilter(item, queryText, itemText) {
+    customFilter(item, queryText) {
       const text = item.toLowerCase();
       const query = queryText.toLowerCase();
       return text.indexOf(query) > -1;
@@ -91,7 +97,14 @@ export default {
       const categoryStore = useRootStore();
       await categoryStore.getMealsByCategoryAndIngredient(this.selectedCategory, this.selectedIngredient, this.selectedCountry);
     },
-
+    async fetchMealsByLetter(letter) {
+      const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?f=${letter.toLowerCase()}`);
+      this.allMeals = response.data.meals || [];
+    },
+    setFilter(letter) {
+      this.currentFilter = letter;
+      this.fetchMealsByLetter(letter);
+    },
 
   },
 };
@@ -138,25 +151,10 @@ export default {
 
   </section>
   <section>
-    <v-row>
-      <v-col
-          cols="12"
-          md="4"
-          v-for="meal in meals"
-          :key="meal.idMeal"
-      >
-        <v-card @click="fetchMealDetails(meal.idMeal)">
-          <div class="image-container">
-            <v-img
-                :src="meal.strMealThumb"
-                :alt="meal.strMeal"
-                height="200px"
-            ></v-img>
-          </div>
-          <v-card-title>{{ meal.strMeal }}</v-card-title>
-        </v-card>
-      </v-col>
-    </v-row>
+    <SearchDisplay
+        :meals="meals"
+        @mealSelected="fetchMealDetails"
+    />
   </section>
   <v-dialog v-model="isModalOpen" persistent max-width="1200px">
     <v-card v-if="currentMealDetails">
@@ -188,6 +186,46 @@ export default {
   </v-dialog>
 
 
+
+  <br>
+  <section>
+    <v-container>
+      <v-row>
+        <v-col
+            v-for="meal in filteredMeals"
+        :key="meal.idMeal"
+        cols="12"
+        md="4"
+        >
+        <v-card @click="fetchMealDetails(meal.idMeal)">
+          <v-img
+              :src="meal.strMealThumb"
+              :alt="meal.strMeal"
+              height="200px"
+              class="image-container"
+          ></v-img>
+          <v-card-title>{{ meal.strMeal }}</v-card-title>
+        </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </section>
+
+  <v-container fluid>
+    <v-row no-gutters justify="center">
+      <v-chip
+          v-for="letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"
+          :key="letter"
+          class="ma-1"
+          outlined
+          color="amber darken-2"
+          @click="setFilter(letter)"
+      >
+        {{ letter }}
+      </v-chip>
+    </v-row>
+  </v-container>
+
   <section class="v s container">
 
     <div style="width: 100%;">
@@ -198,6 +236,7 @@ export default {
   </section>
 
   <section class="v s container">
+
     <div class="row">
       <div class="col-75">
 
@@ -272,7 +311,6 @@ export default {
 
   </footer>
 </template>
-
 <style scoped>
 .image-container {
   background-color: rgb(229, 127, 127);
