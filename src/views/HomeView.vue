@@ -164,48 +164,6 @@ export default {
       </div>
   </section>
 
-  <section>
-
-<!--    <button class="accordion">Pilaf s baklažánom</button>-->
-<!--    <div class="panel">-->
-<!--      <div class="container row">-->
-<!--        <div class="col-50"><img style="width: 100%;" src="/img/4.png" alt=""></div>-->
-<!--        <div class="col-50"><p style="font-family: fantasy;">Podľa legendy pilaf vynašli kuchári Alexandra Veľkého, pretože miloval horúce a korenené jedlá. Teraz chápem, prečo sa toto jedlo považuje za mužské. Spolu so šéfkuchárom a kvôli kompatibilite aj s kamarátom Dmytrom Kensytkym uvarili na ohni pilaf podľa autorkinho receptu. Ukázalo sa to veľmi pikantné a bohaté na chuť.</p></div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <button class="accordion">Ukrajinský boršč s fazuľou, žihľavou a opitou čerešňou</button>-->
-<!--    <div class="panel">-->
-<!--      <div class="container row">-->
-<!--        <div class="col-50"><img style="width: 100%;" src="/img/5.jpeg" alt=""></div>-->
-<!--        <div class="col-50"><p style="font-family: fantasy;">Existuje názor, že ide o veľmi staré jedlo, ktoré kočovné fínsko-maďarské kmene priniesli na územie moderného Maďarska a nášho ukrajinského Zakarpatska. Prototypom tohto jedla bol recept nomádov, ktorí používali sušené konské mäso, hovädzie mäso varené v kotlíku a pridávali ingrediencie trávy, korienkov a húb, ktoré v tom čase poznali.</p></div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <button class="accordion">Rokotkrumpli</button>-->
-<!--    <div class="panel">-->
-<!--      <div class="container row">-->
-<!--        <div class="col-50"><img style="width: 100%;" src="/img/6.jpeg" alt=""></div>-->
-<!--        <div class="col-50"><p style="font-family: fantasy;">Podivný názov hneď napovedá o cudzom pôvode. Vskutku, ide o maďarské jedlo, ktoré si Ukrajinci osvojili do svojho každodenného života. Koniec koncov, recept nie je vôbec zložitý a obsahuje ingrediencie, ktoré má každá rodina: zemiaky, syr, akékoľvek údené mäso a vajcia. To všetko je rozložené v tenkých vrstvách, ochutené červenou paprikou a zapečené.</p></div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <button class="accordion">Knyshi</button>-->
-<!--    <div class="panel">-->
-<!--      <div class="container row">-->
-<!--        <div class="col-50"><img style="width: 100%;" src="/img/7.jpeg" alt=""></div>-->
-<!--        <div class="col-50"><p style="font-family: fantasy;">O pôvode tohto jedla sa vedú mnohé spory. Podľa jednej verzie pochádza z Bieloruska. Vo veľkej časti severných a stredoukrajinských regiónov sa však tešila veľkej obľube. Knyshy sú okrúhle koláčiky z lístkového cesta, v strede ktorých je pomerne veľa plnky. Náplň môže byť veľmi rôznorodá: kaša, zemiaková kaša, zelenina, syry a zelenina. Takouto pochúťkou bola príloha k polievkam či mäsitým jedlám. Nechýbala ani sladká verzia jedla s ovocím, bobuľami a domácim syrom.</p></div>-->
-<!--      </div>-->
-<!--    </div>-->
-
-<!--    <button class="accordion">Kotsyurb</button>-->
-<!--    <div class="panel">-->
-<!--      <div class="container row">-->
-<!--        <div class="col-50"><img style="width: 100%;" src="/img/8.jpeg" alt=""></div>-->
-<!--        <div class="col-50"><p style="font-family: fantasy;">Jedlo, ktoré kombinuje zemiakovú kašu a knedľu. Vzdialene pripomínajúca taliansku variáciu cestovín, kde sa podáva aj so zemiakovou kašou. Nemenej chutné je aj ukrajinské tradičné jedlo: malé halušky z cesta, zemiakov, oškvarkov a cesnaku sa zmiešajú v makitre a to všetko sa podáva v jednej nádobe. Ďalšou verziou jedla je zemiaky nerozdrviť a podávať ich v hrubých kúskoch.</p></div>-->
-<!--      </div>-->
-<!--    </div>-->
-  </section>
 
 
 
