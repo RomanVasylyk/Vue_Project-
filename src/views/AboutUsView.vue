@@ -18,6 +18,7 @@ export default {
       selectedCountry: null,
       allMeals: [],
       currentFilter: 'A',
+      randomMeals: [],
     };
   },
   components: {
@@ -105,7 +106,18 @@ export default {
       this.currentFilter = letter;
       this.fetchMealsByLetter(letter);
     },
+    async fetchRandomMeals() {
+      this.randomMeals = [];
+      for (let i = 0; i < 9; i++) {
+        const response = await axios.get('https://www.themealdb.com/api/json/v1/1/random.php');
+        this.randomMeals.push(response.data.meals[0]);
+      }
+    },
 
+
+  },
+  mounted() {
+    this.fetchRandomMeals();
   },
 };
 </script>
@@ -225,6 +237,35 @@ export default {
       </v-chip>
     </v-row>
   </v-container>
+
+  <section class="random-meals-section">
+    <v-container>
+      <v-row>
+        <v-col cols="12">
+          <h2 class="text-center my-5" style="color: #FFC107;">Random Meals</h2>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col
+            v-for="meal in randomMeals"
+            :key="meal.idMeal"
+            cols="12"
+            md="4"
+        >
+          <v-card @click="fetchMealDetails(meal.idMeal)">
+            <v-img
+                :src="meal.strMealThumb"
+                :alt="meal.strMeal"
+                height="200px"
+                class="image-container"
+            ></v-img>
+            <v-card-title class="text-center">{{ meal.strMeal }}</v-card-title>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </section>
+
 
   <section class="v s container">
 
