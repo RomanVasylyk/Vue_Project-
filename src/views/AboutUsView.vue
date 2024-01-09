@@ -5,6 +5,7 @@ import axios from 'axios';
 import NavigationBar from '../components/NavigationBar.vue';
 import FooterComponent from '../components/FooterComponent.vue';
 import SearchDisplay from "@/components/SearchDisplay.vue";
+import {useAuthStore} from "@/stores/auth.js";
 
 export default {
   data() {
@@ -48,6 +49,9 @@ export default {
     filteredMeals() {
       return this.allMeals.filter(meal => meal.strMeal.startsWith(this.currentFilter));
     },
+    authStore() {
+      return useAuthStore();
+    }
   },
   async created() {
     const categoryStore = useRootStore();
@@ -113,11 +117,29 @@ export default {
         this.randomMeals.push(response.data.meals[0]);
       }
     },
+    toggleFavorite(mealId) {
+      const authStore = useAuthStore();
+      authStore.initialize();
+
+      if (this.isFavorite(mealId)) {
+        authStore.removeFavorite(mealId);
+      } else {
+        authStore.addFavorite(mealId);
+      }
+    },
+    isFavorite(mealId) {
+      const authStore = useAuthStore();
+      return authStore.favorites.includes(mealId);
+    }
 
 
   },
+
   mounted() {
+    const authStore = useAuthStore();
+    authStore.initialize();
     this.fetchRandomMeals();
+
   },
 };
 </script>
@@ -203,21 +225,19 @@ export default {
   <section>
     <v-container>
       <v-row>
-        <v-col
-            v-for="meal in filteredMeals"
-        :key="meal.idMeal"
-        cols="12"
-        md="4"
-        >
-        <v-card @click="fetchMealDetails(meal.idMeal)">
-          <v-img
-              :src="meal.strMealThumb"
-              :alt="meal.strMeal"
-              height="200px"
-              class="image-container"
-          ></v-img>
-          <v-card-title>{{ meal.strMeal }}</v-card-title>
-        </v-card>
+        <v-col v-for="meal in filteredMeals" :key="meal.idMeal" cols="12" md="4">
+          <v-card @click="fetchMealDetails(meal.idMeal)">
+            <v-img :src="meal.strMealThumb" :alt="meal.strMeal" height="200px" class="image-container"></v-img>
+            <v-card-title>
+
+              <v-btn icon @click.stop="toggleFavorite(meal.idMeal)" v-if="authStore.user">
+                <v-icon>
+                  {{ isFavorite(meal.idMeal) ? 'mdi-heart' : 'mdi-heart-outline' }}
+                </v-icon>
+              </v-btn>
+              {{ meal.strMeal }}
+            </v-card-title>
+          </v-card>
         </v-col>
       </v-row>
     </v-container>
@@ -259,7 +279,13 @@ export default {
                 height="200px"
                 class="image-container"
             ></v-img>
-            <v-card-title class="text-center">{{ meal.strMeal }}</v-card-title>
+            <v-card-title class="text-center">
+              <v-btn icon @click.stop="toggleFavorite(meal.idMeal)" v-if="authStore.user">
+              <v-icon>
+                {{ isFavorite(meal.idMeal) ? 'mdi-heart' : 'mdi-heart-outline' }}
+              </v-icon>
+            </v-btn>{{ meal.strMeal }}
+            </v-card-title>
           </v-card>
         </v-col>
       </v-row>

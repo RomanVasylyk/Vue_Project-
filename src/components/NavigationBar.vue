@@ -44,6 +44,7 @@ export default {
       this.$router.push('/Login');
     },
   },
+
 };
 </script>
 
