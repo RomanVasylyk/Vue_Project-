@@ -20,6 +20,7 @@ export default {
       allMeals: [],
       currentFilter: 'A',
       randomMeals: [],
+      favoriteMealsDetails: [],
     };
   },
   components: {
@@ -117,7 +118,7 @@ export default {
         this.randomMeals.push(response.data.meals[0]);
       }
     },
-    toggleFavorite(mealId) {
+    async toggleFavorite(mealId) {
       const authStore = useAuthStore();
       authStore.initialize();
 
@@ -126,19 +127,46 @@ export default {
       } else {
         authStore.addFavorite(mealId);
       }
+      if (!this.favoriteMealsDetails.some(meal => meal.idMeal === mealId)) {
+          const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`);
+          const mealDetails = response.data.meals[0];
+          if (mealDetails) {
+            this.favoriteMealsDetails.push(mealDetails);
+          }
+      }
     },
     isFavorite(mealId) {
       const authStore = useAuthStore();
       return authStore.favorites.includes(mealId);
-    }
+    },
+    async fetchFavoriteMealsDetails() {
+      const authStore = useAuthStore();
+      const mealDetailsPromises = authStore.favorites.map(mealId =>
+          axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealId}`)
+      );
 
+        const mealsResponses = await Promise.all(mealDetailsPromises);
+        this.favoriteMealsDetails = mealsResponses.map(response => response.data.meals[0]);
+
+    },
+
+    getMealThumb(mealId) {
+      const meal = this.favoriteMealsDetails.find(m => m.idMeal === mealId);
+      return meal ? meal.strMealThumb : '';
+    },
+
+    getMealName(mealId) {
+      const meal = this.favoriteMealsDetails.find(m => m.idMeal === mealId);
+      return meal ? meal.strMeal : '';
+    },
 
   },
 
-  mounted() {
+  async mounted() {
     const authStore = useAuthStore();
     authStore.initialize();
-    this.fetchRandomMeals();
+    await this.fetchRandomMeals();
+    await this.fetchFavoriteMealsDetails();
 
   },
 };
@@ -147,7 +175,6 @@ export default {
 
 <template>
   <header class="container main-header">
-    <a href="#"><img class="img" src="/img/images.jpeg" alt="Logo"></a>
 
     <NavigationBar />
 
@@ -284,7 +311,8 @@ export default {
               <v-icon>
                 {{ isFavorite(meal.idMeal) ? 'mdi-heart' : 'mdi-heart-outline' }}
               </v-icon>
-            </v-btn>{{ meal.strMeal }}
+            </v-btn>
+              {{ meal.strMeal }}
             </v-card-title>
           </v-card>
         </v-col>
@@ -292,7 +320,40 @@ export default {
     </v-container>
   </section>
 
-
+  <section class="favorite-meals-section" v-if="authStore.favorites.length">
+    <v-container>
+      <v-row>
+        <v-col cols="12">
+          <h2 class="text-center my-5" style="color: #FFC107;">Favorite Meals</h2>
+        </v-col>
+      </v-row>
+      <v-row>
+        <v-col
+            v-for="mealId in authStore.favorites"
+            :key="mealId"
+            cols="12"
+            md="4"
+        >
+          <v-card @click="fetchMealDetails(mealId)">
+            <v-img
+                :src="getMealThumb(mealId)"
+                :alt="getMealName(mealId)"
+                height="200px"
+                class="image-container"
+            ></v-img>
+            <v-card-title class="text-center">
+              <v-btn icon @click.stop="toggleFavorite(mealId)" v-if="authStore.user">
+                <v-icon>
+                  {{ isFavorite(mealId) ? 'mdi-heart' : 'mdi-heart-outline' }}
+                </v-icon>
+              </v-btn>
+              {{ getMealName(mealId) }}
+            </v-card-title>
+          </v-card>
+        </v-col>
+      </v-row>
+    </v-container>
+  </section>
 
 
   <footer class="container">

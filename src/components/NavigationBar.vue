@@ -1,6 +1,10 @@
 <template>
+  <a><img class="img" src="/img/images.jpeg" alt="Logo"></a>
+
   <nav class="main-nav">
+
     <ul class="main-menu" id="main-menu">
+
       <li>
         <router-link to="/">Domov</router-link>
       </li>
@@ -22,9 +26,7 @@
       <v-btn v-if="isLoggedIn" color="error" @click="logout">Logout</v-btn>
 
     </ul>
-    <a class="hamburger" id="hamburger">
-      <i class="fa fa-bars"></i>
-    </a>
+
   </nav>
 </template>
 
@@ -32,6 +34,7 @@
 import { useAuthStore } from '@/stores/auth';
 export default {
   name: 'NavigationBar',
+
   computed: {
     isLoggedIn() {
       return localStorage.getItem('isLoggedIn') === 'true';

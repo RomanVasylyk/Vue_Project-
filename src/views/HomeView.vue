@@ -16,7 +16,6 @@ export default {
 <template>
 
   <header class="container main-header">
-    <a><img class="img" src="/img/images.jpeg" alt="Logo"></a>
 
     <NavigationBar />
 

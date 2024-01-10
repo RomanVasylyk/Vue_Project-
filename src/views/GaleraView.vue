@@ -1,6 +1,6 @@
 <template>
 <header class="container main-header">
-  <a href="#"><img class="img" src="/img/images.jpeg" alt="Logo"></a>
+
 
   <NavigationBar />
 
