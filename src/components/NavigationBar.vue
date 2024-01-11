@@ -1,7 +1,9 @@
 <template>
   <a><img class="img" src="/img/images.jpeg" alt="Logo"></a>
-
-  <nav class="main-nav">
+  <input v-model="searchQuery" @keyup.enter="searchMeal" type="text" placeholder="Search for a meal...">
+  <v-btn icon @click="searchMeal">
+    <v-icon>mdi-magnify</v-icon>
+  </v-btn>  <nav class="main-nav">
 
     <ul class="main-menu" id="main-menu">
 
@@ -34,7 +36,11 @@
 import { useAuthStore } from '@/stores/auth';
 export default {
   name: 'NavigationBar',
-
+  data() {
+    return {
+      searchQuery: '',
+    };
+  },
   computed: {
     isLoggedIn() {
       return localStorage.getItem('isLoggedIn') === 'true';
@@ -45,6 +51,11 @@ export default {
       const authStore = useAuthStore();
       authStore.logout();
       this.$router.push('/Login');
+    },
+    searchMeal() {
+        if (this.searchQuery.trim()) {
+          this.$router.push({ name: 'SearchResults', query: { query: this.searchQuery } });
+        }
     },
   },
 
