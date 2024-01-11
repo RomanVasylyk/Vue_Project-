@@ -4,6 +4,8 @@ export const useAuthStore = defineStore('auth', {
     state: () => ({
         user: null,
         favorites: [],
+        reviews: [],
+        users: [],
     }),
     actions: {
         register(name, email, password) {
@@ -73,6 +75,34 @@ export const useAuthStore = defineStore('auth', {
                     this.favorites = user.favorites || [];
                 }
             }
-        }
+        },
+        addReview(mealId, review) {
+            const newReview = {
+                mealId,
+                userId: this.user.id,
+                comment: review.comment,
+                rating: review.rating,
+                date: new Date().toISOString()
+            };
+
+            this.reviews.push(newReview);
+            this.saveReviewsToLocalStorage();
+        },
+
+        saveReviewsToLocalStorage() {
+            localStorage.setItem('reviews', JSON.stringify(this.reviews));
+        },
+        loadReviewsFromLocalStorage() {
+            const savedReviews = localStorage.getItem('reviews');
+            if (savedReviews) {
+                this.reviews = JSON.parse(savedReviews);
+            }
+        },
+        loadUsersFromLocalStorage() {
+            const savedUsers = localStorage.getItem('users');
+            if (savedUsers) {
+                this.users = JSON.parse(savedUsers);
+            }
+        },
     },
 });

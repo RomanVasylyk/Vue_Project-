@@ -6,6 +6,7 @@ import NavigationBar from '../components/NavigationBar.vue';
 import FooterComponent from '../components/FooterComponent.vue';
 import SearchDisplay from "@/components/SearchDisplay.vue";
 import {useAuthStore} from "@/stores/auth.js";
+import ReviewComponent from "@/components/ReviewComponent.vue";
 
 export default {
   data() {
@@ -27,6 +28,8 @@ export default {
     NavigationBar,
     FooterComponent,
     SearchDisplay,
+    ReviewComponent,
+
 
   },
   computed: {
@@ -242,6 +245,9 @@ export default {
           <strong>Video Recipe:</strong>
           <a :href="currentMealDetails?.strYoutube" target="_blank">Watch here</a>
         </p>
+
+        <review-component :mealId="currentMealDetails?.idMeal"></review-component>
+
       </v-card-text>
     </v-card>
   </v-dialog>

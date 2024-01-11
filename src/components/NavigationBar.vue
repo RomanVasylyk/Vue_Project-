@@ -3,7 +3,8 @@
   <input v-model="searchQuery" @keyup.enter="searchMeal" type="text" placeholder="Search for a meal...">
   <v-btn icon @click="searchMeal">
     <v-icon>mdi-magnify</v-icon>
-  </v-btn>  <nav class="main-nav">
+  </v-btn>
+  <nav class="main-nav">
 
     <ul class="main-menu" id="main-menu">
 
