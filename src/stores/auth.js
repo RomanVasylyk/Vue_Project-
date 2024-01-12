@@ -6,6 +6,8 @@ export const useAuthStore = defineStore('auth', {
         favorites: [],
         reviews: [],
         users: [],
+        viewHistory: {},
+
     }),
     actions: {
         register(name, email, password) {
@@ -69,7 +71,10 @@ export const useAuthStore = defineStore('auth', {
                 const users = JSON.parse(localStorage.getItem('users')) || [];
                 const email = localStorage.getItem('currentUserEmail');
                 const user = users.find(u => u.email === email);
-
+                const savedViewHistory = localStorage.getItem('viewHistory');
+                if (savedViewHistory) {
+                    this.viewHistory = JSON.parse(savedViewHistory);
+                }
                 if (user) {
                     this.user = user;
                     this.favorites = user.favorites || [];
@@ -123,6 +128,20 @@ export const useAuthStore = defineStore('auth', {
                     this.user = users[userIndex];
                     alert('User data updated successfully!');
                 }
+            }
+        },
+        updateViewHistory(mealId) {
+            const userId = this.user?.id;
+            if (userId) {
+                if (!this.viewHistory[userId]) {
+                    this.viewHistory[userId] = [];
+                }
+                const existingIndex = this.viewHistory[userId].indexOf(mealId);
+                if (existingIndex > -1) {
+                    this.viewHistory[userId].splice(existingIndex, 1);
+                }
+                this.viewHistory[userId].unshift(mealId);
+                localStorage.setItem('viewHistory', JSON.stringify(this.viewHistory));
             }
         }
 

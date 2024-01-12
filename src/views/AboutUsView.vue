@@ -92,6 +92,10 @@ export default {
       const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
       this.currentMealDetails = response.data.meals[0];
       this.isModalOpen = true;
+
+      const authStore = useAuthStore();
+      authStore.updateViewHistory(id);
+
     },
     closeModal() {
       this.isModalOpen = false;

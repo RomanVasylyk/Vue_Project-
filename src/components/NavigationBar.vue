@@ -58,6 +58,7 @@ export default {
       searchQuery: '',
       items: [
         { title: 'Account', action: () => this.goToAccountPage() },
+        { title: 'History', action: () => this.goToHistoryPage() },
         { title: 'Logout', action: this.logout },
       ],
     };
@@ -80,6 +81,9 @@ export default {
     },
     goToAccountPage() {
       this.$router.push('/account');
+    },
+    goToHistoryPage() {
+      this.$router.push('/history');
     },
   },
 
