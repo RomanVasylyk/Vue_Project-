@@ -21,11 +21,15 @@
         <router-link to="/contact">Kontakt</router-link>
       </li>
       <li>
+        <router-link v-if="isLoggedIn" to="/forum">Forum</router-link>
+      </li>
+      <li>
         <router-link v-if="!isLoggedIn" to="/Login">Login</router-link>
       </li>
       <li>
         <router-link v-if="!isLoggedIn" to="/Register">Register</router-link>
       </li>
+
 
     </ul>
 

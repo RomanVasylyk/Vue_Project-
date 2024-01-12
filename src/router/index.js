@@ -67,6 +67,11 @@ const router = createRouter({
       name: 'History',
       component: () => import('../views/HistoryView.vue'),
     },
+    {
+      path: '/forum',
+      name: 'Forum',
+      component: () => import('../views/ForumView.vue'),
+    },
   ]
 })
 

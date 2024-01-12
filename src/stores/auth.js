@@ -7,7 +7,7 @@ export const useAuthStore = defineStore('auth', {
         reviews: [],
         users: [],
         viewHistory: {},
-
+        forumTopics: {},
     }),
     actions: {
         register(name, email, password) {
@@ -143,7 +143,45 @@ export const useAuthStore = defineStore('auth', {
                 this.viewHistory[userId].unshift(mealId);
                 localStorage.setItem('viewHistory', JSON.stringify(this.viewHistory));
             }
-        }
+        },
+        createTopic(topicId, topicTitle, topicDescription) {
+            if (!this.forumTopics[topicId]) {
+                this.forumTopics[topicId] = {
+                    title: topicTitle,
+                    description: topicDescription,
+                    messages: []
+                };
+                this.saveForumTopicsToLocalStorage();
+            }
+        },
+
+        addMessageToTopic(topicId, message) {
+            if (!this.user) {
+                console.error("User not logged in or not found");
+                return;
+            }
+            if (!this.forumTopics[topicId]) {
+                console.error(`Topic with ID ${topicId} not found`);
+                return;
+            }
+            this.forumTopics[topicId].messages.push({
+                userId: this.user.id,
+                content: message,
+                date: new Date().toISOString()
+            });
+            this.saveForumTopicsToLocalStorage();
+        },
+
+        saveForumTopicsToLocalStorage() {
+            localStorage.setItem('forumTopics', JSON.stringify(this.forumTopics));
+        },
+
+        loadForumTopicsFromLocalStorage() {
+            const savedTopics = localStorage.getItem('forumTopics');
+            if (savedTopics) {
+                this.forumTopics = JSON.parse(savedTopics);
+            }
+        },
 
     },
 });
