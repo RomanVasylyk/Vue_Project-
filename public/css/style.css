@@ -79,7 +79,8 @@ header a:hover{
   }
 }
 .img{
-  width: 32%;
+  width: 6.5%;
+  margin-left: -100px;
 }
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
@@ -173,7 +174,10 @@ footer ul li a{
 }
 h1{
   color: antiquewhite;
-  
+  text-align: center;
+}
+h2{
+  color: antiquewhite;
   text-align: center;
 }
 .col-75{

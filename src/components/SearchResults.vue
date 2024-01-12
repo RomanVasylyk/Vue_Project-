@@ -52,6 +52,8 @@
           <a :href="currentMealDetails?.strYoutube" target="_blank">Watch here</a>
         </p>
       </v-card-text>
+      <review-component :mealId="currentMealDetails?.idMeal"></review-component>
+
     </v-card>
   </v-dialog>
 </template>
@@ -59,8 +61,10 @@
 <script>
 import axios from 'axios';
 import { useAuthStore } from '@/stores/auth';
+import ReviewComponent from "@/components/ReviewComponent.vue";
 
 export default {
+  components: {ReviewComponent},
   data() {
     return {
       searchResults: [],

@@ -22,8 +22,8 @@
       </v-col>
 
     </v-row>
-    <v-row>
-      <v-col cols="12" md="8" offset-md="2">
+    <v-row v-if="isUserLoggedIn">
+      <v-col cols="12" md="8" offset-md="2" >
         <v-form @submit.prevent="submitReview">
           <v-textarea v-model="newReview.comment" label="Your Review" outlined></v-textarea>
           <v-slider v-model="newReview.rating" :max="5" label="Rating" thumb-label="always" class="my-4"></v-slider>
@@ -48,7 +48,10 @@ export default {
     };
   },
   computed: {
-
+    isUserLoggedIn() {
+      const authStore = useAuthStore();
+      return !!authStore.user;
+    },
     mealReviews() {
       const authStore = useAuthStore();
       return authStore.reviews.filter(review => review.mealId === this.mealId);

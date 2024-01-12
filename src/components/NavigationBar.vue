@@ -1,7 +1,7 @@
 <template>
-  <a><img class="img" src="/img/images.jpeg" alt="Logo"></a>
+  <img class="img" src="/img/images.jpeg" alt="Logo">
   <input v-model="searchQuery" @keyup.enter="searchMeal" type="text" placeholder="Search for a meal...">
-  <v-btn icon @click="searchMeal">
+  <v-btn  icon @click="searchMeal">
     <v-icon>mdi-magnify</v-icon>
   </v-btn>
   <nav class="main-nav">
@@ -26,11 +26,27 @@
       <li>
         <router-link v-if="!isLoggedIn" to="/Register">Register</router-link>
       </li>
-      <v-btn v-if="isLoggedIn" color="error" @click="logout">Logout</v-btn>
 
     </ul>
 
   </nav>
+  <div v-if="isLoggedIn">
+    <v-menu open-on-hover >
+      <template v-slot:activator="{ props }">
+        <v-icon style="font-size: 30px" class="mdi mdi-menu" v-bind="props"></v-icon>
+      </template>
+
+      <v-list>
+        <v-list-item
+            v-for="(item, index) in items"
+            :key="index"
+            @click="item.action ? item.action() : null"
+        >
+          <v-list-item-title>{{ item.title }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
+  </div>
 </template>
 
 <script>
@@ -40,6 +56,10 @@ export default {
   data() {
     return {
       searchQuery: '',
+      items: [
+        { title: 'Account', action: () => this.goToAccountPage() },
+        { title: 'Logout', action: this.logout },
+      ],
     };
   },
   computed: {
@@ -57,6 +77,9 @@ export default {
         if (this.searchQuery.trim()) {
           this.$router.push({ name: 'SearchResults', query: { query: this.searchQuery } });
         }
+    },
+    goToAccountPage() {
+      this.$router.push('/account');
     },
   },
 

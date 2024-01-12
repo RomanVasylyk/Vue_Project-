@@ -73,9 +73,13 @@ export const useAuthStore = defineStore('auth', {
                 if (user) {
                     this.user = user;
                     this.favorites = user.favorites || [];
+                } else {
+                    localStorage.removeItem('isLoggedIn');
+                    this.user = null;
                 }
             }
         },
+
         addReview(mealId, review) {
             const newReview = {
                 mealId,
@@ -104,5 +108,23 @@ export const useAuthStore = defineStore('auth', {
                 this.users = JSON.parse(savedUsers);
             }
         },
+        updateUserDetails(updatedUser) {
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userIndex = users.findIndex(user => user.id === this.user.id);
+
+            let emailInUse = users.some(user => user.email === updatedUser.email && user.id !== this.user.id);
+
+            if (emailInUse) {
+                alert('Email is already in use by another account.');
+            } else {
+                if (userIndex !== -1) {
+                    users[userIndex] = {...users[userIndex], ...updatedUser};
+                    localStorage.setItem('users', JSON.stringify(users));
+                    this.user = users[userIndex];
+                    alert('User data updated successfully!');
+                }
+            }
+        }
+
     },
 });
