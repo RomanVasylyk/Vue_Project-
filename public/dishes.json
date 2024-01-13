@@ -1,0 +1,34 @@
+{
+  "dishes": [
+    {
+      "id": 1,
+      "title": "Pilaf s baklažánom",
+      "description": "Podľa legendy pilaf vynašli kuchári Alexandra Veľkého, pretože miloval horúce a korenené jedlá. Teraz chápem, prečo sa toto jedlo považuje za mužské. Spolu so šéfkuchárom a kvôli kompatibilite aj s kamarátom Dmytrom Kensytkym uvarili na ohni pilaf podľa autorkinho receptu. Ukázalo sa to veľmi pikantné a bohaté na chuť.",
+      "image": "/img/4.png"
+    },
+    {
+      "id": 2,
+      "title": "Ukrajinský boršč s fazuľou, žihľavou a opitou čerešňou",
+      "description": "Existuje názor, že ide o veľmi staré jedlo, ktoré kočovné fínsko-maďarské kmene priniesli na územie moderného Maďarska a nášho ukrajinského Zakarpatska. Prototypom tohto jedla bol recept nomádov, ktorí používali sušené konské mäso, hovädzie mäso varené v kotlíku a pridávali ingrediencie trávy, korienkov a húb, ktoré v tom čase poznali.",
+      "image": "/img/5.jpeg"
+    },
+    {
+      "id": 3,
+      "title": "Rokotkrumpli",
+      "description": "Podivný názov hneď napovedá o cudzom pôvode. Vskutku, ide o maďarské jedlo, ktoré si Ukrajinci osvojili do svojho každodenného života. Koniec koncov, recept nie je vôbec zložitý a obsahuje ingrediencie, ktoré má každá rodina: zemiaky, syr, akékoľvek údené mäso a vajcia. To všetko je rozložené v tenkých vrstvách, ochutené červenou paprikou a zapečené.",
+      "image": "/img/6.jpeg"
+    },
+    {
+      "id": 4,
+      "title": "Knyshi",
+      "description": "O pôvode tohto jedla sa vedú mnohé spory. Podľa jednej verzie pochádza z Bieloruska. Vo veľkej časti severných a stredoukrajinských regiónov sa však tešila veľkej obľube. Knyshy sú okrúhle koláčiky z lístkového cesta, v strede ktorých je pomerne veľa plnky. Náplň môže byť veľmi rôznorodá: kaša, zemiaková kaša, zelenina, syry a zelenina. Takouto pochúťkou bola príloha k polievkam či mäsitým jedlám. Nechýbala ani sladká verzia jedla s ovocím, bobuľami a domácim syrom.",
+      "image": "/img/7.jpeg"
+    },
+    {
+      "id": 5,
+      "title": "Kotsyurb",
+      "description": "Jedlo, ktoré kombinuje zemiakovú kašu a knedľu. Vzdialene pripomínajúca taliansku variáciu cestovín, kde sa podáva aj so zemiakovou kašou. Nemenej chutné je aj ukrajinské tradičné jedlo: malé halušky z cesta, zemiakov, oškvarkov a cesnaku sa zmiešajú v makitre a to všetko sa podáva v jednej nádobe. Ďalšou verziou jedla je zemiaky nerozdrviť a podávať ich v hrubých kúskoch.",
+      "image": "/img/8.jpeg"
+    }
+  ]
+}

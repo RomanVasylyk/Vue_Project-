@@ -89,6 +89,9 @@ export default {
         this.currentMealDetails = response.data.meals[0];
         this.mealIngredients = this.parseIngredients(this.currentMealDetails);
         this.isModalOpen = true;
+
+        const authStore = useAuthStore();
+        authStore.updateViewHistory(id);
     },
     parseIngredients(meal) {
       return Array.from({length: 20}, (_, i) => ({

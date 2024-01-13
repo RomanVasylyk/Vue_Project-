@@ -1,0 +1,22 @@
+{
+  "sections": [
+    {
+      "id": "interior",
+      "title": "Interiér",
+      "content": "Vo vnútri reštaurácie Mriya je všetko veľmi dobre organizované. Aj preto sa do jej sál zmestí naraz 500 ľudí. Sály reštaurácie sú zariadené mäkkým nábytkom a podlaha je pokrytá kobercami. V hlavnej sále reštaurácie je inštalovaný malý funkčný krb, ktorý je nielen miestnou dekoráciou, ale v chladnom období zohrieva návštevníkov podniku a vytvára atmosféru domácej pohody. V tejto hale sa nachádza vonkajší gril, kde sa pripravujú niektoré jedlá z jedálneho lístka.Vo veľkej sále reštaurácie \"Mriya\" je karaoke, kde môžu hostia predviesť svoje schopnosti. Má tiež vynikajúce zvukové vybavenie, vďaka ktorému je hlas znieť ešte jasnejší. Hostia zariadenia môžu sedieť na farebných mäkkých pohovkách stojacich za stolmi vyrobenými z dreva. Interiér reštaurácie je zariadený v klasickom štýle: podlaha je vyrobená z prírodných dubových dosiek a steny sú zdobené tehlovým murivom.",
+      "image": "/img/1.avif"
+    },
+    {
+      "id": "kitchen",
+      "title": "Kuchyňa",
+      "content": "V reštaurácii \"Mriya\" sa podávajú jedlá európskej, japonskej a stredomorskej kuchyne. Jedálny lístok tohto zariadenia je pomerne rozmanitý, plný vynikajúcich európskych jedál. Môžete tu ochutnať zaujímavé studené (tatarák z červeného tuniaka s krutónmi, lososové carpaccio s granulovaným červeným kaviárom, bravčová masť s cesnakom a chlebom Borodino, syr \"Pinocchio\" s paradajkami) a teplé predjedlá (zapečené krabie falangy, knedle, wasabi krevety) s krabmi s avokádo), šaláty (s vyprážaným lososom, s kuracou pečeňou, \"grécky\", s grilovanou zeleninou s balzamikovým dresingom a parmezánom). Na začiatok ponúkajú niekoľko možností polievok (šťaveľová polievka, jahňací lagman, slepačia rezancová polievka, hríbová polievka) a ako hlavné jedlo teplé mäsové jedlá (mäso na francúzsky spôsob, kačacie rezne, kuracie filé s orechovou omáčkou, mramor steak so sójovými bôbmi) a jedlá z rýb (rezne zo šťuky, filé z murmanskej tresky, krabie rezne so šalátom chuka a avokádom). Reštaurácia Mriya ponúka aj grilované jedlá (krevety, hrebenatky, chobotnice, dorado, chobotnice, steak z lososa, lyula kebab, ribeye steak).",
+      "image": "/img/2.avif"
+    },
+    {
+      "id": "breakfast",
+      "title": "Raňajky",
+      "content": "Každý hosť zariadenia môže využiť špeciálnu ponuku, ktorá platí počas celého dňa a nazýva sa „Raňajky“. Ponuka tejto ponuky obsahuje niekoľko možností na varenie vajec, ktoré sú dodávané z farmy Jevhena Savatova z dediny Orlya (región Kaluga). Aj v tomto malom sortimente je burger s placičkou \"Prime\", tvarohové cheesecaky, ovsená kaša jogurt s višňovým džemom. Cena kompletnej sady, ktorá môže obsahovať raňajky, je cca 500 eur.",
+      "image": "/img/3.avif"
+    }
+  ]
+}

@@ -1,6 +1,11 @@
 <template>
+  <header class="container main-header">
+
+    <NavigationBar />
+
+  </header>
   <v-container>
-    <h1>Forum</h1>
+    <h1 class="hh1">Forum</h1>
     <v-btn @click="showCreateTopicDialog = true">Create New Topic</v-btn>
 
     <v-dialog v-model="showCreateTopicDialog">
@@ -21,6 +26,7 @@
       <v-list-item v-for="(topic, id) in forumTopics" :key="id" @click="openTopic(id)">
         <v-list-item-content>
           <v-list-item-title>{{ topic.title }}</v-list-item-title>
+          <v-list-item-subtitle>{{ topic.messages.length }} Comments</v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -38,6 +44,7 @@
           <v-divider></v-divider>
           <div v-for="(message, index) in currentTopic.messages" :key="index">
             <p><strong>User:</strong> {{ getUserById(message.userId).name }}</p>
+            <p><strong>Date:</strong> {{ formatDate(message.date) }}</p>
             <p>{{ message.content }}</p>
           </div>
           <v-divider></v-divider>
@@ -51,8 +58,10 @@
 
 <script>
 import { useAuthStore } from '@/stores/auth';
+import NavigationBar from "@/components/NavigationBar.vue";
 
 export default {
+  components: {NavigationBar},
   data() {
     return {
       showCreateTopicDialog: false,
@@ -100,7 +109,12 @@ export default {
         this.newMessage = '';
         this.currentTopic = { ...this.currentTopic };
       }
-    }
+    },
+    formatDate(dateString) {
+      return new Date(dateString).toLocaleDateString(undefined, {
+        year: 'numeric', month: 'long', day: 'numeric'
+      });
+    },
 
   },
   mounted() {
