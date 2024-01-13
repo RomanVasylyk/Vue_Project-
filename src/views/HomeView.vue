@@ -35,11 +35,8 @@ export default {
 
 
 <template>
-
   <header class="container main-header">
-
     <NavigationBar />
-
   </header>
   <main>
     <div class="hero-img">
@@ -53,48 +50,79 @@ export default {
     </div>
   </main>
 
-    <section v-for="section in sections" :key="section.id" class="s fo">
+    <section
+        v-for="section in sections"
+        :key="section.id"
+        class="s fo"
+    >
       <v-row>
-        <v-col cols="12" md="6">
+        <v-col
+            cols="12"
+            md="6"
+        >
           <h4>{{ section.title }}</h4>
           <p>{{ section.content }}</p>
         </v-col>
-        <v-col cols="12" md="6">
-          <v-img :src="section.image" style="width: 100%;"></v-img>
+        <v-col
+            cols="12"
+            md="6"
+        >
+          <v-img
+              :src="section.image"
+              style="width: 100%;"
+          ></v-img>
         </v-col>
       </v-row>
     </section>
 
 
       <section>
-        <v-expansion-panels variant="popout" class="mb-6">
-          <v-expansion-panel v-for="dish in dishes" :key="dish.id" class="salmon-background">
-            <v-expansion-panel-title expand-icon="mdi-menu-down">
+        <v-expansion-panels
+            variant="popout"
+            class="mb-6"
+        >
+          <v-expansion-panel
+              v-for="dish in dishes"
+              :key="dish.id"
+              class="salmon-background"
+          >
+            <v-expansion-panel-title
+                expand-icon="mdi-menu-down"
+            >
               {{ dish.title }}
             </v-expansion-panel-title>
-            <div class="d-flex">
-              <div style="flex: 1;">
+            <div
+                class="d-flex"
+            >
+              <div
+                  style="flex: 1;"
+              >
                 <v-expansion-panel-text>
                   {{ dish.description }}
                 </v-expansion-panel-text>
               </div>
-              <div style="flex: 1;">
+              <div
+                  style="flex: 1;"
+              >
                 <v-expansion-panel-text>
-                  <img :src="dish.image" style="width: 100%;" alt="">
+                  <img
+                      :src="dish.image"
+                      style="width: 100%;"
+                      alt=""
+                  >
                 </v-expansion-panel-text>
               </div>
             </div>
           </v-expansion-panel>
         </v-expansion-panels>
       </section>
-  
+
   <footer class="container">
     <FooterComponent />
-
   </footer>
 </template>
 
-<style>
+<style scoped>
 .salmon-background {
   background-color: #CC6666 !important;
 }

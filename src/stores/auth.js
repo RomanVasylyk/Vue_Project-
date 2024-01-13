@@ -182,6 +182,40 @@ export const useAuthStore = defineStore('auth', {
                 this.forumTopics = JSON.parse(savedTopics);
             }
         },
+        deleteUser() {
+            const currentUserEmail = localStorage.getItem('currentUserEmail');
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const updatedUsers = users.filter(user => user.email !== currentUserEmail);
+
+
+            const viewHistory = JSON.parse(localStorage.getItem('viewHistory')) || {};
+            if (this.user && this.user.id in viewHistory) {
+                delete viewHistory[this.user.id];
+                localStorage.setItem('viewHistory', JSON.stringify(viewHistory));
+            }
+
+            const reviews = JSON.parse(localStorage.getItem('reviews')) || [];
+            const updatedReviews = reviews.filter(review => review.userId !== this.user.id);
+            localStorage.setItem('reviews', JSON.stringify(updatedReviews));
+
+            const forumTopics = JSON.parse(localStorage.getItem('forumTopics')) || {};
+
+            for (const topicId in forumTopics) {
+                const topic = forumTopics[topicId];
+                if (topic.messages) {
+                    topic.messages = topic.messages.filter(message => message.userId !== this.user.id);
+                }
+            }
+            localStorage.setItem('forumTopics', JSON.stringify(forumTopics));
+
+            localStorage.setItem('users', JSON.stringify(updatedUsers));
+            localStorage.removeItem('currentUserEmail');
+            localStorage.removeItem('isLoggedIn');
+
+            this.user = null;
+            this.favorites = [];
+            return true;
+        },
 
     },
 });

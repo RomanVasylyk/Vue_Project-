@@ -1,18 +1,31 @@
 <template>
   <v-container>
     <v-row>
-      <v-col v-for="(review, index) in mealReviews" :key="index" cols="12" md="6">
-        <v-card class="mb-2">
+      <v-col
+          v-for="(review, index) in mealReviews"
+          :key="index"
+          cols="12"
+          md="6"
+      >
+        <v-card
+            class="mb-2"
+        >
           <v-card-title>
-            <v-icon left>mdi-account</v-icon>
+            <v-icon
+                left
+            >mdi-account</v-icon>
             {{ getUserById(review.userId).name }}
           </v-card-title>
           <v-card-subtitle>
-            <v-icon left>mdi-star</v-icon>
+            <v-icon
+                left
+            >mdi-star</v-icon>
             Rating: {{ formatRating(review.rating) }} / 5
           </v-card-subtitle>
           <v-card-subtitle>
-            <v-icon left>mdi-calendar</v-icon>
+            <v-icon
+                left
+            >mdi-calendar</v-icon>
             Date: {{ formatDate(review.date) }}
           </v-card-subtitle>
           <v-card-text>
@@ -22,12 +35,32 @@
       </v-col>
 
     </v-row>
-    <v-row v-if="isUserLoggedIn">
-      <v-col cols="12" md="8" offset-md="2" >
-        <v-form @submit.prevent="submitReview">
-          <v-textarea v-model="newReview.comment" label="Your Review" outlined></v-textarea>
-          <v-slider v-model="newReview.rating" :max="5" label="Rating" thumb-label="always" class="my-4"></v-slider>
-          <v-btn type="submit" color="primary">Submit Review</v-btn>
+    <v-row
+        v-if="isUserLoggedIn"
+    >
+      <v-col
+          cols="12"
+          md="8"
+          offset-md="2"
+      >
+        <v-form
+            @submit.prevent="submitReview"
+        >
+          <v-textarea
+              v-model="newReview.comment"
+              label="Your Review"
+              outlined
+          ></v-textarea>
+          <v-slider
+              v-model="newReview.rating"
+              :max="5" label="Rating"
+              thumb-label="always"
+              class="my-4"
+          ></v-slider>
+          <v-btn
+              type="submit"
+              color="primary"
+          >Submit Review</v-btn>
         </v-form>
       </v-col>
     </v-row>

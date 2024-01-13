@@ -6,24 +6,41 @@
   </header>
   <v-container>
     <h1 class="hh1">Forum</h1>
-    <v-btn @click="showCreateTopicDialog = true">Create New Topic</v-btn>
+    <v-btn
+        @click="showCreateTopicDialog = true"
+    >Create New Topic</v-btn>
 
-    <v-dialog v-model="showCreateTopicDialog">
+    <v-dialog
+        v-model="showCreateTopicDialog"
+    >
       <v-card>
         <v-card-title>Create a new topic</v-card-title>
         <v-card-text>
-          <v-text-field v-model="newTopicTitle" label="Topic Title"></v-text-field>
-          <v-textarea v-model="newTopicDescription" label="Topic Description"></v-textarea>
+          <v-text-field
+              v-model="newTopicTitle" label="Topic Title"
+          ></v-text-field>
+          <v-textarea
+              v-model="newTopicDescription"
+              label="Topic Description"
+          ></v-textarea>
         </v-card-text>
         <v-card-actions>
-          <v-btn @click="createTopic">Create</v-btn>
-          <v-btn @click="showCreateTopicDialog = false">Cancel</v-btn>
+          <v-btn
+              @click="createTopic"
+          >Create</v-btn>
+          <v-btn
+              @click="showCreateTopicDialog = false"
+          >Cancel</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
 
     <v-list>
-      <v-list-item v-for="(topic, id) in forumTopics" :key="id" @click="openTopic(id)">
+      <v-list-item
+          v-for="(topic, id) in forumTopics"
+          :key="id"
+          @click="openTopic(id)"
+      >
         <v-list-item-content>
           <v-list-item-title>{{ topic.title }}</v-list-item-title>
           <v-list-item-subtitle>{{ topic.messages.length }} Comments</v-list-item-subtitle>
@@ -31,10 +48,15 @@
       </v-list-item>
     </v-list>
     <!-- Dialog for the selected topic -->
-    <v-dialog v-model="showTopicDialog" fullscreen>
+    <v-dialog
+        v-model="showTopicDialog"
+        fullscreen
+    >
       <v-card>
         <v-toolbar>
-          <v-btn icon @click="showTopicDialog = false">
+          <v-btn
+              icon @click="showTopicDialog = false"
+          >
             <v-icon>mdi-close</v-icon>
           </v-btn>
           <v-toolbar-title>{{ currentTopic.title }}</v-toolbar-title>
@@ -42,14 +64,23 @@
         <v-card-text>
           <p>{{ currentTopic.description }}</p>
           <v-divider></v-divider>
-          <div v-for="(message, index) in currentTopic.messages" :key="index">
+          <div
+              v-for="(message, index) in currentTopic.messages"
+              :key="index"
+          >
             <p><strong>User:</strong> {{ getUserById(message.userId).name }}</p>
             <p><strong>Date:</strong> {{ formatDate(message.date) }}</p>
             <p>{{ message.content }}</p>
           </div>
           <v-divider></v-divider>
-          <v-textarea v-model="newMessage" label="Your message" rows="3"></v-textarea>
-          <v-btn @click="addMessage">Send</v-btn>
+          <v-textarea
+              v-model="newMessage"
+              label="Your message"
+              rows="3"
+          ></v-textarea>
+          <v-btn
+              @click="addMessage"
+          >Send</v-btn>
         </v-card-text>
       </v-card>
     </v-dialog>
@@ -98,9 +129,6 @@ export default {
       }
       return {};
     },
-
-
-
     addMessage() {
       const authStore = useAuthStore();
       if (this.newMessage.trim() && this.currentTopic) {
@@ -115,7 +143,6 @@ export default {
         year: 'numeric', month: 'long', day: 'numeric'
       });
     },
-
   },
   mounted() {
     const authStore = useAuthStore();

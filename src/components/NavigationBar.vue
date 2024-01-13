@@ -1,45 +1,85 @@
 <template>
-  <img class="img" src="/img/images.jpeg" alt="Logo">
-  <input v-model="searchQuery" @keyup.enter="searchMeal" type="text" placeholder="Search for a meal...">
-  <v-btn  icon @click="searchMeal">
+  <img
+      class="img"
+      src="/img/images.jpeg"
+      alt="Logo"
+  >
+  <input
+      v-model="searchQuery"
+      @keyup.enter="searchMeal"
+      type="text"
+      placeholder="Search for a meal..."
+  >
+  <v-btn
+      icon @click="searchMeal"
+  >
     <v-icon>mdi-magnify</v-icon>
   </v-btn>
-  <nav class="main-nav">
-
-    <ul class="main-menu" id="main-menu">
-
+  <nav
+      class="main-nav"
+  >
+    <ul
+        class="main-menu"
+        id="main-menu"
+    >
       <li>
-        <router-link to="/">Domov</router-link>
+        <router-link
+            to="/"
+        >Domov</router-link>
       </li>
       <li>
-        <router-link to="/blog">Blog</router-link>
+        <router-link
+            to="/blog"
+        >Blog</router-link>
       </li>
       <li>
-        <router-link to="/galleria">Galeria</router-link>
+        <router-link
+            to="/galleria"
+        >Galeria</router-link>
       </li>
       <li>
-        <router-link to="/contact">Kontakt</router-link>
+        <router-link
+            to="/contact"
+        >Kontakt</router-link>
       </li>
       <li>
-        <router-link v-if="isLoggedIn" to="/forum">Forum</router-link>
+        <router-link
+            v-if="isLoggedIn"
+            to="/forum"
+        >Forum</router-link>
       </li>
       <li>
-        <router-link v-if="!isLoggedIn" to="/Login">Login</router-link>
+        <router-link
+            v-if="!isLoggedIn"
+            to="/Login"
+        >Login</router-link>
       </li>
       <li>
-        <router-link v-if="!isLoggedIn" to="/Register">Register</router-link>
+        <router-link
+            v-if="!isLoggedIn"
+            to="/Register"
+        >Register</router-link>
       </li>
 
 
     </ul>
 
   </nav>
-  <div v-if="isLoggedIn">
-    <v-menu open-on-hover >
-      <template v-slot:activator="{ props }">
-        <v-icon style="font-size: 30px" class="mdi mdi-menu" v-bind="props"></v-icon>
+  <div
+      v-if="isLoggedIn"
+  >
+    <v-menu
+        open-on-hover
+    >
+      <template
+          v-slot:activator="{ props }"
+      >
+        <v-icon
+            style="font-size: 30px"
+            class="mdi mdi-menu"
+            v-bind="props"
+        ></v-icon>
       </template>
-
       <v-list>
         <v-list-item
             v-for="(item, index) in items"

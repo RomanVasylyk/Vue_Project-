@@ -1,12 +1,27 @@
 <template>
   <div>
     <v-row>
-      <v-col cols="12" md="4" v-for="meal in meals" :key="meal.idMeal">
-        <v-card @click.stop="mealSelected(meal.idMeal)">
-          <v-img :src="meal.strMealThumb" :alt="meal.strMeal" height="200px" class="image-container"></v-img>
+      <v-col
+          cols="12"
+          md="4"
+          v-for="meal in meals"
+          :key="meal.idMeal"
+      >
+        <v-card
+            @click.stop="mealSelected(meal.idMeal)"
+        >
+          <v-img
+              :src="meal.strMealThumb"
+              :alt="meal.strMeal"
+              height="200px"
+              class="image-container"
+          ></v-img>
           <v-card-title>
 
-            <v-btn icon @click.stop="toggleFavorite(meal.idMeal)" v-if="authStore.user">
+            <v-btn
+                icon @click.stop="toggleFavorite(meal.idMeal)"
+                v-if="authStore.user"
+            >
               <v-icon>
                 {{ isFavorite(meal.idMeal) ? 'mdi-heart' : 'mdi-heart-outline' }}
               </v-icon>

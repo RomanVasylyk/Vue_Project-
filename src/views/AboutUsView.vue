@@ -59,7 +59,7 @@ export default {
   },
   async created() {
     const categoryStore = useRootStore();
-    categoryStore.getCategory();
+    await categoryStore.getCategory();
       const ingredientResponse = await axios.get('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
       this.ingredients = ingredientResponse.data.meals.map(ingredient => ingredient.strIngredient);
 
@@ -181,10 +181,10 @@ export default {
 
 
 <template>
-  <header class="container main-header">
-
-    <NavigationBar />
-
+  <header
+      class="container main-header"
+  >
+    <NavigationBar/>
   </header>
 
   <section class="header">
@@ -224,33 +224,51 @@ export default {
         @mealSelected="fetchMealDetails"
     />
   </section>
-  <v-dialog v-model="isModalOpen" persistent max-width="1200px">
+  <v-dialog
+      v-model="isModalOpen"
+      persistent max-width="1200px"
+  >
     <v-card v-if="currentMealDetails">
       <v-card-title>
         {{ currentMealDetails?.strMeal }}
         <v-spacer></v-spacer>
-        <v-btn icon @click="closeModal">
+        <v-btn
+            icon @click="closeModal"
+        >
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-card-title>
       <v-card-text>
-        <v-img :src="currentMealDetails?.strMealThumb" height="600px"></v-img>
+        <v-img
+            :src="currentMealDetails?.strMealThumb"
+            height="600px"
+        ></v-img>
         <p><strong>Category:</strong> {{ currentMealDetails?.strCategory }}</p>
         <p><strong>Cuisine:</strong> {{ currentMealDetails?.strArea }}</p>
         <p><strong>Instructions:</strong> {{ currentMealDetails?.strInstructions }}</p>
 
         <h3>Ingredients:</h3>
         <ul>
-          <li v-for="(item, index) in mealIngredients" :key="index">
+          <li
+              v-for="(item, index) in mealIngredients"
+              :key="index"
+          >
             {{ item.ingredient }} - {{ item.measure }}
           </li>
         </ul>
-        <p v-if="currentMealDetails?.strYoutube">
+        <p
+            v-if="currentMealDetails?.strYoutube"
+        >
           <strong>Video Recipe:</strong>
-          <a :href="currentMealDetails?.strYoutube" target="_blank">Watch here</a>
+          <a
+              :href="currentMealDetails?.strYoutube"
+              target="_blank"
+          >Watch here</a>
         </p>
 
-        <review-component :mealId="currentMealDetails?.idMeal"></review-component>
+        <review-component
+            :mealId="currentMealDetails?.idMeal"
+        ></review-component>
 
       </v-card-text>
     </v-card>
@@ -262,12 +280,27 @@ export default {
   <section>
     <v-container>
       <v-row>
-        <v-col v-for="meal in filteredMeals" :key="meal.idMeal" cols="12" md="4">
-          <v-card @click="fetchMealDetails(meal.idMeal)">
-            <v-img :src="meal.strMealThumb" :alt="meal.strMeal" height="200px" class="image-container"></v-img>
+        <v-col
+            v-for="meal in filteredMeals"
+            :key="meal.idMeal"
+            cols="12"
+            md="4"
+        >
+          <v-card
+              @click="fetchMealDetails(meal.idMeal)"
+          >
+            <v-img
+                :src="meal.strMealThumb"
+                :alt="meal.strMeal"
+                height="200px"
+                class="image-container"
+            ></v-img>
             <v-card-title>
 
-              <v-btn icon @click.stop="toggleFavorite(meal.idMeal)" v-if="authStore.user">
+              <v-btn
+                  icon @click.stop="toggleFavorite(meal.idMeal)"
+                  v-if="authStore.user"
+              >
                 <v-icon>
                   {{ isFavorite(meal.idMeal) ? 'mdi-heart' : 'mdi-heart-outline' }}
                 </v-icon>
@@ -281,7 +314,9 @@ export default {
   </section>
 
   <v-container fluid>
-    <v-row no-gutters justify="center">
+    <v-row
+        no-gutters
+        justify="center">
       <v-chip
           v-for="letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"
           :key="letter"
@@ -298,7 +333,9 @@ export default {
   <section class="random-meals-section">
     <v-container>
       <v-row>
-        <v-col cols="12">
+        <v-col
+            cols="12"
+        >
           <h2 class="text-center my-5" style="color: #FFC107;">Random Meals</h2>
         </v-col>
       </v-row>
@@ -309,15 +346,22 @@ export default {
             cols="12"
             md="4"
         >
-          <v-card @click="fetchMealDetails(meal.idMeal)">
+          <v-card
+              @click="fetchMealDetails(meal.idMeal)"
+          >
             <v-img
                 :src="meal.strMealThumb"
                 :alt="meal.strMeal"
                 height="200px"
                 class="image-container"
             ></v-img>
-            <v-card-title class="text-center">
-              <v-btn icon @click.stop="toggleFavorite(meal.idMeal)" v-if="authStore.user">
+            <v-card-title
+                class="text-center"
+            >
+              <v-btn
+                  icon @click.stop="toggleFavorite(meal.idMeal)"
+                  v-if="authStore.user"
+              >
               <v-icon>
                 {{ isFavorite(meal.idMeal) ? 'mdi-heart' : 'mdi-heart-outline' }}
               </v-icon>
@@ -330,10 +374,15 @@ export default {
     </v-container>
   </section>
 
-  <section class="favorite-meals-section" v-if="authStore.favorites.length">
+  <section
+      class="favorite-meals-section"
+      v-if="authStore.favorites.length"
+  >
     <v-container>
       <v-row>
-        <v-col cols="12">
+        <v-col
+            cols="12"
+        >
           <h2 class="text-center my-5" style="color: #FFC107;">Favorite Meals</h2>
         </v-col>
       </v-row>
@@ -344,15 +393,22 @@ export default {
             cols="12"
             md="4"
         >
-          <v-card @click="fetchMealDetails(mealId)">
+          <v-card
+              @click="fetchMealDetails(mealId)"
+          >
             <v-img
                 :src="getMealThumb(mealId)"
                 :alt="getMealName(mealId)"
                 height="200px"
                 class="image-container"
             ></v-img>
-            <v-card-title class="text-center">
-              <v-btn icon @click.stop="toggleFavorite(mealId)" v-if="authStore.user">
+            <v-card-title
+                class="text-center"
+            >
+              <v-btn
+                  icon @click.stop="toggleFavorite(mealId)"
+                  v-if="authStore.user"
+              >
                 <v-icon>
                   {{ isFavorite(mealId) ? 'mdi-heart' : 'mdi-heart-outline' }}
                 </v-icon>
@@ -367,9 +423,7 @@ export default {
 
 
   <footer class="container">
-
     <FooterComponent />
-
   </footer>
 </template>
 <style scoped>

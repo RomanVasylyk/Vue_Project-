@@ -1,15 +1,25 @@
 <template>
-  <header class="container main-header">
+  <header
+      class="container main-header"
+  >
     <NavigationBar />
   </header>
 
   <v-container>
-    <v-card class="mx-auto my-12" max-width="500">
-      <v-card-title class="justify-center">
-        <span class="headline">Account Settings</span>
+    <v-card
+        class="mx-auto my-12"
+        max-width="500">
+      <v-card-title
+          class="justify-center"
+      >
+        <span
+            class="headline"
+        >Account Settings</span>
       </v-card-title>
       <v-card-text>
-        <v-form ref="form" v-model="valid">
+        <v-form
+            ref="form"
+            v-model="valid">
           <v-text-field
               v-model="userForm.name"
               :rules="nameRules"
@@ -41,8 +51,13 @@
           <v-btn
               text
               color="grey"
+              class="mr-4"
               @click="resetForm"
           >Cancel</v-btn>
+          <v-btn
+              color="error"
+              @click="deleteAccount"
+          >Delete Account</v-btn>
         </v-form>
       </v-card-text>
     </v-card>
@@ -100,7 +115,17 @@ export default {
         this.$refs.form.reset();
         this.loadUserData();
       },
-
+      deleteAccount() {
+        if (confirm('Naozaj chcete odstrániť svoj účet?')) {
+          const authStore = useAuthStore();
+          const success = authStore.deleteUser();
+          if (success) {
+            this.$router.push('/');
+          } else {
+            this.errorMessage = "Incorrect email or password.";
+          }
+        }
+      },
 
     },
   mounted() {

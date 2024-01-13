@@ -1,12 +1,28 @@
 <template>
 
   <v-container>
-    <v-btn color="error" @click="goBack">Back</v-btn>
+    <v-btn
+        color="error"
+        @click="goBack"
+    >Back</v-btn>
 
-    <v-row justify="center">
-      <v-col cols="12" sm="8" md="4">
-        <v-card class="pa-4">
-          <v-form ref="form" v-model="valid" lazy-validation @submit.prevent="register">
+    <v-row
+        justify="center"
+    >
+      <v-col
+          cols="12"
+          sm="8"
+          md="4"
+      >
+        <v-card
+            class="pa-4"
+        >
+          <v-form
+              ref="form"
+              v-model="valid"
+              lazy-validation
+              @submit.prevent="register"
+          >
 
             <v-text-field
                 v-model="name"
@@ -27,11 +43,23 @@
                 :rules="passwordRules"
                 required
             ></v-text-field>
-            <v-btn :disabled="!valid" color="success" type="submit">Register</v-btn>
+            <v-btn
+                :disabled="!valid"
+                color="success"
+                type="submit"
+            >Register</v-btn>
 
-            <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
+            <div
+                v-if="errorMessage"
+                class="error-message"
+            >{{ errorMessage }}</div>
 
-            <p class="mt-3">Already have an account? <router-link to="/login">Log in</router-link></p>
+            <p
+                class="mt-3"
+            >Already have an account?
+              <router-link
+                  to="/login"
+              >Log in</router-link></p>
           </v-form>
         </v-card>
       </v-col>
@@ -87,7 +115,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .error-message {
   color: red;
   margin-top: 10px;

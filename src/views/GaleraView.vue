@@ -12,27 +12,65 @@
 
 
   <section>
-    <v-carousel hide-delimiters cycle>
-      <v-carousel-item v-for="(slide, index) in slides" :key="index">
-        <v-img :src="slide.src"></v-img>
+    <v-carousel
+        hide-delimiters
+        cycle
+    >
+      <v-carousel-item
+          v-for="(slide, index) in slides"
+          :key="index"
+      >
+        <v-img
+            :src="slide.src"
+        ></v-img>
       </v-carousel-item>
     </v-carousel>
   </section>
 
   <v-container>
     <v-row>
-      <v-col v-for="(image, index) in imagesRow1" :key="index" cols="12" sm="6" md="3">
-        <v-img :src="image" class="i" aspect-ratio="1.5"></v-img>
+      <v-col
+          v-for="(image, index) in imagesRow1"
+          :key="index"
+          cols="12"
+          sm="6"
+          md="3"
+      >
+        <v-img
+            :src="image"
+            class="i"
+            aspect-ratio="1.5"
+        ></v-img>
       </v-col>
     </v-row>
     <v-row>
-      <v-col v-for="(image, index) in imagesRow2" :key="index" cols="12" sm="6" md="3">
-        <v-img :src="image" class="o" aspect-ratio="1.5"></v-img>
+      <v-col
+          v-for="(image, index) in imagesRow2"
+          :key="index"
+          cols="12"
+          sm="6"
+          md="3"
+      >
+        <v-img
+            :src="image"
+            class="o"
+            aspect-ratio="1.5"
+        ></v-img>
       </v-col>
     </v-row>
     <v-row>
-      <v-col v-for="(image, index) in imagesRow3" :key="index" cols="12" sm="6" md="3">
-        <v-img :src="image" class="u" aspect-ratio="1.5"></v-img>
+      <v-col
+          v-for="(image, index) in imagesRow3"
+          :key="index"
+          cols="12"
+          sm="6"
+          md="3"
+      >
+        <v-img
+            :src="image"
+            class="u"
+            aspect-ratio="1.5"
+        ></v-img>
       </v-col>
     </v-row>
   </v-container>

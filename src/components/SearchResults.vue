@@ -1,5 +1,8 @@
 <template>
-  <v-btn color="error" @click="goBack">Back</v-btn>
+  <v-btn
+      color="error"
+      @click="goBack"
+  >Back</v-btn>
 
   <v-container>
     <v-row>
@@ -9,10 +12,19 @@
           cols="12"
           md="4"
       >
-        <v-card @click="fetchMealDetails(meal.idMeal)">
-          <v-img :src="meal.strMealThumb" :alt="meal.strMeal" height="200px"></v-img>
+        <v-card
+            @click="fetchMealDetails(meal.idMeal)"
+        >
+          <v-img
+              :src="meal.strMealThumb"
+              :alt="meal.strMeal"
+              height="200px"
+          ></v-img>
           <v-card-title>
-            <v-btn icon @click.stop="toggleFavorite(meal.idMeal)" v-if="isUserLoggedIn">
+            <v-btn
+                icon @click.stop="toggleFavorite(meal.idMeal)"
+                v-if="isUserLoggedIn"
+            >
               <v-icon>
                 {{ isFavorite(meal.idMeal) ? 'mdi-heart' : 'mdi-heart-outline' }}
               </v-icon>
@@ -26,33 +38,55 @@
   </v-container>
 
   <!-- Dialog for meal details -->
-  <v-dialog v-model="isModalOpen" persistent max-width="1200px">
-    <v-card v-if="currentMealDetails">
+  <v-dialog
+      v-model="isModalOpen"
+      persistent
+      max-width="1200px"
+  >
+    <v-card
+        v-if="currentMealDetails"
+    >
       <v-card-title>
         {{ currentMealDetails?.strMeal }}
         <v-spacer></v-spacer>
-        <v-btn icon @click="closeModal">
+        <v-btn
+            icon
+            @click="closeModal"
+        >
           <v-icon>mdi-close</v-icon>
         </v-btn>
       </v-card-title>
       <v-card-text>
-        <v-img :src="currentMealDetails?.strMealThumb" height="600px"></v-img>
+        <v-img
+            :src="currentMealDetails?.strMealThumb"
+            height="600px"
+        ></v-img>
         <p><strong>Category:</strong> {{ currentMealDetails?.strCategory }}</p>
         <p><strong>Cuisine:</strong> {{ currentMealDetails?.strArea }}</p>
         <p><strong>Instructions:</strong> {{ currentMealDetails?.strInstructions }}</p>
         <!-- Display ingredients and measures -->
         <h3>Ingredients:</h3>
         <ul>
-          <li v-for="(item, index) in mealIngredients" :key="index">
+          <li
+              v-for="(item, index) in mealIngredients"
+              :key="index"
+          >
             {{ item.ingredient }} - {{ item.measure }}
           </li>
         </ul>
-        <p v-if="currentMealDetails?.strYoutube">
+        <p
+            v-if="currentMealDetails?.strYoutube"
+        >
           <strong>Video Recipe:</strong>
-          <a :href="currentMealDetails?.strYoutube" target="_blank">Watch here</a>
+          <a
+              :href="currentMealDetails?.strYoutube"
+              target="_blank"
+          >Watch here</a>
         </p>
       </v-card-text>
-      <review-component :mealId="currentMealDetails?.idMeal"></review-component>
+      <review-component
+          :mealId="currentMealDetails?.idMeal"
+      ></review-component>
 
     </v-card>
   </v-dialog>
