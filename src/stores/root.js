@@ -1,7 +1,6 @@
 // root.js
 import { defineStore } from 'pinia';
 import axios from 'axios';
-import { Category_URL, Meal_By_Category_URL } from '../Constants';
 
 export const useRootStore = defineStore('root', {
     state: () => ({
@@ -11,16 +10,8 @@ export const useRootStore = defineStore('root', {
     }),
     actions: {
         async getCategory() {
-            const data = await axios.get(Category_URL);
+            const data = await axios.get(`https://www.themealdb.com/api/json/v1/1/list.php?c=list`);
             this.Category = data?.data?.meals;
-        },
-        async getMeals(category) {
-            const data = await axios.get(`${Meal_By_Category_URL}${category}`);
-            this.Meal = data?.data?.meals;
-        },
-        async getMealsByIngredient(ingredient) {
-            const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${ingredient}`);
-            this.Meal = response.data.meals;
         },
         async getMealsByCategoryAndIngredient(category, ingredient, country) {
             let mealsByCategory = [];
@@ -28,7 +19,7 @@ export const useRootStore = defineStore('root', {
             let mealsByCountry = [];
 
             if (category) {
-                const responseCategory = await axios.get(`${Meal_By_Category_URL}${category}`);
+                const responseCategory = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`);
                 mealsByCategory = responseCategory.data.meals;
             }
 
@@ -70,10 +61,7 @@ export const useRootStore = defineStore('root', {
             this.Meal = combinedMeals;
         },
 
-        async getMealsByCountry(country) {
-            const response = await axios.get(`https://www.themealdb.com/api/json/v1/1/filter.php?a=${country}`);
-            return response.data.meals;
-        },
+
 
     },
 });
