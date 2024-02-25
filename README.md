@@ -1,0 +1,13 @@
+<img width="1440" alt="Знімок екрана 2024-02-25 о 23 06 57" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/5f78d893-2b97-4ae6-a0cb-654905ea20d8">
+<img width="1440" alt="Знімок екрана 2024-02-25 о 23 07 35" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/3cb39266-8218-4667-9eee-a08feb020b26">
+<img width="1440" alt="Знімок екрана 2024-02-25 о 23 07 46" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/f5e519eb-23d6-49f9-b9df-7d5e3b334177">
+<img width="1440" alt="Знімок екрана 2024-02-25 о 23 07 59" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/1fd354c2-98d6-4aeb-97c8-0105e7b84ac1">
+<img width="1440" alt="Знімок екрана 2024-02-25 о 23 08 08" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/b1437a40-3c51-41f7-909b-bf2efad3d5bb">
+<img width="1440" alt="Знімок екрана 2024-02-25 о 23 08 20" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/23c3aac5-c67e-46f7-8e48-261afdbd9e2a">
+<img width="1440" alt="Знімок екрана 2024-02-25 о 23 08 32" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/179f3806-604d-41c2-977b-b337547e0de0">
+<img width="1440" alt="Знімок екрана 2024-02-25 о 23 08 42" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/e6e54a16-ad16-4729-ba28-6bfe500cca6a">
+<img width="1440" alt="Знімок екрана 2024-02-25 о 23 08 49" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/3e488c2a-9809-492d-9dab-f5b5baa5306e">
+<img width="1440" alt="Знімок екрана 2024-02-25 о 23 09 10" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/6c583d21-8933-40c8-94ac-3652909d90c7">
+<img width="1440" alt="Знімок екрана 2024-02-25 о 23 09 19" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/ba7b54f5-3e74-41be-9b12-306600c4ba1f">
+<img width="1439" alt="Знімок екрана 2024-02-25 о 23 09 39" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/a43e22d8-0b19-4b0a-9ff9-a88e301eec32">
+<img width="1440" alt="Знімок екрана 2024-02-25 о 23 09 29" src="https://github.com/RomanVasylyk/Vue_Project-/assets/131609378/19e17540-33d6-454c-bd49-e8e5c6be6e6b">
